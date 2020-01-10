@@ -1,0 +1,32 @@
+<div class="wrapper" style="width: 100%;">
+  <ul
+    nz-menu
+    nzMode="inline"
+    [nzInlineCollapsed]="layout.collapsed"
+  >
+    <ng-container *ngTemplateOutlet="menuTpl; context: { $implicit: menus }">
+    </ng-container>
+    <ng-template #menuTpl let-menus>
+      <ng-container *ngFor="let menu of menus">
+        <li nz-menu-item *ngIf="!menu.children" (click)="navigateTo(menu)">
+          <i nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></i>
+          <span>{{ menu.title }}</span>
+        </li>
+
+        <li
+          nz-submenu
+          *ngIf="menu.children"
+          [nzTitle]="menu.title"
+          [nzIcon]="menu.icon"
+          (nzOpenChange)="openMenu(menu.id)"
+        >
+          <ul>
+            <ng-container
+              *ngTemplateOutlet="menuTpl; context: { $implicit: menu.children }"
+            ></ng-container>
+          </ul>
+        </li>
+      </ng-container>
+    </ng-template>
+  </ul>
+</div>

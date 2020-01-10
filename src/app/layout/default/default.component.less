@@ -1,0 +1,48 @@
+@import "../../../styles.less";
+
+.page-loading {
+  width: 100vw;
+  height: 3px;
+  overflow: hidden;
+  background: fade(#ddd, 40%);
+  position: fixed;
+  z-index: 29;
+
+  &::after {
+    content: ' ';
+    height: 100%;
+    width: 33.3vw;
+    animation: gradcolours 5s steps(1) infinite, loadthird 1s infinite linear;
+    display: block;
+    transform-origin: top left;
+  }
+}
+
+.main-header {
+  display: flex;
+  height: 100%;
+  line-height: 1.5em;
+  align-items: center;
+}
+
+.content_box {
+  position: absolute;
+  left: 0px;
+  right: 0;
+  top: 54px;
+  bottom: 0;
+  // padding-bottom: 30px;
+  transition: left 0.3s ease-in-out;
+  background-color: rgba(127, 255, 212, 0.479);
+}
+
+.main-body {
+  width: auto;
+  height: 100%;
+  margin: 10px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  background-color: #f0f0f0;
+  // font-size: 28px;
+}
